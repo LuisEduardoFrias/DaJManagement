@@ -1,0 +1,80 @@
+[
+  {
+    "key": "yf6ue7j37dj99wjehdujd",
+    "name": "plato 1",
+    "score": 8,
+    "description": "este es un plato ejemplo para probar.",
+    "ingredients": [
+      {
+        "name": "ingrediente x - 1",
+        "medida": "tasa",
+        "acount": 10,
+        "ingredients": [
+          {
+            "name": "ingrediente x - 1",
+            "medida": "tasa",
+            "acount": 10
+          },
+          {
+            "name": "ingrediente x - 2",
+            "medida": "tasa",
+            "acount": 10
+          }
+        ]
+      },
+      {
+        "name": "ingrediente x - 2",
+        "medida": "tasa",
+        "acount": 10
+      },
+      {
+        "name": "ingrediente x - 3",
+        "medida": "tasa",
+        "acount": 10
+      },
+      {
+        "name": "ingrediente x - 4",
+        "medida": "tasa",
+        "acount": 10
+      },
+      {
+        "name": "ingrediente x - 5",
+        "medida": "tasa",
+        "acount": 10
+      }
+    ]
+  },
+  {
+    "key": "yf6ue7j37gjtg6grjehdujd",
+    "name": "plato 2",
+    "score": 8,
+    "description": "este es un plato ejemplo para probar.",
+    "ingredients": [
+      {
+        "name": "ingrediente x - 1",
+        "medida": "tasa",
+        "acount": 10
+      },
+      {
+        "name": "ingrediente x - 2",
+        "medida": "tasa",
+        "acount": 10
+      },
+      {
+        "name": "ingrediente x - 3",
+        "medida": "tasa",
+        "acount": 10
+      },
+      {
+        "name": "ingrediente x - 4",
+        "medida": "tasa",
+        "acount": 10
+      },
+      {
+        "name": "ingrediente x - 5",
+        "medida": "tasa",
+        "acount": 10
+      }
+    ]
+  }
+]
