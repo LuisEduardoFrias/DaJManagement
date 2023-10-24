@@ -1,0 +1,110 @@
+
+.expand {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.container-data-expand {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  box-sizing: border-box;
+}
+
+.container-icon-expand {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  box-sizing: border-box;
+}
+
+/*‐---------------------CONTRACT------------------------*/
+
+.contract {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: center;
+}
+
+.container-icon-contract {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  align-content: flex-start;
+}
+
+.container-data-contract {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.string {
+  color: #008cf3;
+}
+.number {
+  color: #f30000;
+}
+.boolean {
+  color: #b300f3;
+}
+
+.list-items {
+  padding-right: 20px;
+  box-sizing: border-box;
+}
+
+.items {
+  box-sizing: border-box;
+}
+
+.input {
+  background-color: transparent;
+  border: none;
+}
+
+.input:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+pre label:not(.llave) {
+  font-style: normal;
+}
+
+.llave {
+  color: #61a6e0;
+  user-select: none;
+}
+
+.corchete {
+  color: #c66c75;
+  user-select: none;
+}
+
+.key {
+  color: #c9aa88ff;
+  margin-right: 5px;
+  user-select: none;
+}
+
+.value {
+  color: #2ed147ff;
+}
+
+input {
+  user-select: text;
+  background-color: transparent;
+  width: 100%;
+  margin-right: 20px;
+}
+
+input:focus {
+  outline: none;
+  box-shadow: none;
+}

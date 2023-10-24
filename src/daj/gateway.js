@@ -47,11 +47,11 @@ class daj {
   //method get async
   //
   getAsync(obj) {
-    argumentsCheck({ obj: obj });
+    //argumentsCheck({ obj: obj });
 
     let constructor_name;
-    constructor_name = obj.constructor.name;
-    Reflect.deleteProperty(obj, "constructor");
+    constructor_name = obj;//obj.constructor.name;
+    //Reflect.deleteProperty(obj, "constructor");
 
     try {
       let dataReturn = fs.readFileSync(db_name);

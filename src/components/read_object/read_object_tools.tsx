@@ -1,9 +1,10 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import "./mng_obj.css";
+import "./read_object.css";
+import ReadObject from './read_object'
 import Icon from "@/components/icon/icon";
 
-enum Types {
+export enum Types {
   s = "string",
   n = "number",
   b = "boolean",
@@ -23,6 +24,14 @@ export function isBoolean(obj: object): boolean {
   return typeof obj === "boolean";
 }
 
+export function isObject(obj: object): boolean {
+  return !Array.isArray(obj) && typeof obj === "object";
+}
+
+export function isArray(obj: object): boolean {
+  return Array.isArray(obj) && typeof obj === "object";
+}
+
 export function CheckType(obj: string | number | boolean): Types {
   if (isBoolean(obj)) {
     return Types.b;
@@ -40,19 +49,9 @@ export function StyleType(obj: string | number | boolean): string {
   else if (value === Types.b) return "boolean";
 }
 
-export function isObject(obj: object): boolean {
-  return !Array.isArray(obj) && typeof obj === "object";
-}
-
-export function isArray(obj: object): boolean {
-  return Array.isArray(obj) && typeof obj === "object";
-}
-
-export default function ObjectRead({ obj }: Object) {
-  return (
-    <>{Array.isArray(obj) ? <Corchete obj={obj} /> : <Llave obj={obj} />}</>
-  );
-}
+//------------------------------------------
+//------------------------------------------
+//------------------------------------------
 
 enum WrapType {
   corchete,
@@ -109,13 +108,13 @@ function Expand(props: ISpanProps) {
   );
 }
 
-function Corchete({ obj }: Object) {
+export function Corchete({ obj }: Object) {
   return (
     <Expand wrapType={WrapType.corchete}>
       <div className='list-items'>
         {obj.map((e, i) => {
           return isObject(e) ? (
-            <ObjectRead obj={e} />
+            <ReadObject obj={e} />
           ) : (
             <>
               <input
@@ -133,7 +132,7 @@ function Corchete({ obj }: Object) {
   );
 }
 
-function Llave({ obj }: Object) {
+export function Llave({ obj }: Object) {
   return (
     <Expand wrapType={WrapType.llave}>
       <div className='list-items'>
