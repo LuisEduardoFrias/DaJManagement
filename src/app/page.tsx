@@ -44,9 +44,10 @@ export default async function Home() {
 
   return (
     <main className='flex min-h-screen gap-5 flex-col items-center p-4'>
+      <ObjectCube dios={true} />
       <h1>DaJ Managemen</h1>
       <Link
-        href={`/mng_object/?objname=__add__`}
+        href={`/add`}
         className='w-60 border-2 border-b-blue-400 p-2 object'
       >
         <ObjectCube />
