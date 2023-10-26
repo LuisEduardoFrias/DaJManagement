@@ -1,22 +1,23 @@
-
 .container-add {
- display: flex;
- flex-direction: column;
- justify-content: center;
- align-items: center;
- gap: 10px;
- width: 100%;
- height: 100%;
- padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .container-add textarea {
- width: 100%;
- height: 100vh;
- color: white;
- background-color: transparent;
- padding: 5px;
- box-shadow: 0 0 2px 1px #3d0053;
+  width: 100%;
+  height: 100vh;
+  color: white;
+  background-color: transparent;
+  padding: 5px;
+  box-sizing: border-box;
+  box-shadow: 0 0 2px 1px #3d0053;
 }
 
 .container-add textarea:focus {
@@ -37,9 +38,9 @@ input:focus {
 }
 
 select {
- background-color: transparent;
- border-bottom: 1px solid silver;
- padding: 2px;
+  background-color: transparent;
+  border-bottom: 1px solid silver;
+  padding: 2px;
 }
 
 select:focus {
@@ -48,9 +49,78 @@ select:focus {
 }
 
 .prop {
- border: 1px solid black;
- border-radius: 3px 3px;
- padding: 6px;
- margin: 5px;
- box-shadow: inset 1px 1px 3px 1px #e089ff, inset -1px -1px 3px 1px #600082;
+  display: grid;
+  grid-template-columns: 230px 1fr;
+  grid-template-rows: 1fr;
+  grid-row-gap: 0;
+  border: 1px solid black;
+  border-radius: 3px 3px;
+  padding: 6px;
+  margin: 5px;
+  box-shadow:
+    inset 1px 1px 3px 1px #e089ff,
+    inset -1px -1px 3px 1px #600082;
+}
+
+.prop legend {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  background-color: transparent;
+}
+
+.prop legend label {
+  padding-inline: 5px;
+  box-sizing: border-box;
+  background-color: black;
+}
+
+.prop legend button {
+  padding-inline: 5px;
+  box-sizing: border-box;
+  margin-top: 5px;
+  background-color: black;
+}
+
+.container-input {
+  grid-area: 1 / 1 / 2 / 2;
+}
+
+.container-select {
+  grid-area: 1 / 2 / 2 / 3;
+  margin-top: 25px;
+}
+
+.container-radio {
+  display: flex;
+  gap: 5px;
+  width: 100px;
+}
+
+.auto-key {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 5px;
+  width: 90%;
+  box-sizing: border-box;
+  padding-bottom: 5px;
+  border-bottom: 2px solid #a100da74;
+  border-radius: 5px 5px;
+}
+
+.interruptor-key {
+  display: flex;
+  gap: 15px;
+}
+
+.label-key {
+  display: flex;
+  gap: 5px;
+}
+
+.container-obcjet-name {
+  width: 90%;
+  margin-bottom: 5px;
 }

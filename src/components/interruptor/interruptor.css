@@ -1,0 +1,44 @@
+.interruptor {
+  background-color: transparent;
+  border: none;
+  border-radius: 15px 15px;
+  width: 50px;
+  height: 25px;
+  padding: 5px;
+  box-sizing: border-box;
+  color: #ffffff;
+  box-shadow:
+    0 0 3px 1px #bb00fdb6,
+    inset -1px -1px 3px 1px #6d0094,
+    inset 1px 1px 3px 1px #d04dff;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.bool {
+  width: 40%;
+  height: 100%;
+  border-radius: 50% 50%;
+  box-sizing: border-box;
+  user-select: none;
+  transition: all 0.5s ease;
+}
+
+.activated {
+  background-color: #c62ffc;
+  box-shadow:
+    0 0 3px 1px #bb00fdb6,
+    inset -1px -1px 3px 1px #d04dff,
+    inset 1px 1px 3px 1px #6d0094;
+}
+
+.desactive {
+  background-color: #6d0094;
+  box-shadow:
+    0 0 3px 1px #bb00fdb6,
+    inset -1px -1px 3px 1px #d04dff,
+    inset 1px 1px 3px 1px #6d0094;
+  cursor: pointer;
+  margin-left: 23px;
+  transform: scale(0.8);
+}

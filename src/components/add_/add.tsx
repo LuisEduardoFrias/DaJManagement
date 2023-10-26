@@ -1,108 +1,164 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Icon from "@/components/icon/icon";
+import Interruptor from "@/components/interruptor/interruptor";
 import "./add.css";
+
+enum Type {
+  string,
+  number,
+  boolean,
+  object,
+  array,
+}
 
 interface IJson {
   name: "string";
   value: any;
+  type: string;
 }
 
 export default function Add() {
   const [jsonValue, setJsonValue] = useState<IJson>([]);
-  const [typeValue, setTypeValue] = useState("text");
+  const [isAutoKey, setIsAutoKey] = useState(true);
+
+  useEffect(() => {}, [jsonValue]);
+
+  function handleKey(interruptor: boolean) {
+    setIsAutoKey(interruptor);
+  }
 
   function handleClick() {
-    setJsonValue(prev => [...prev, { name: "", value: null }]);
+    setJsonValue(prev => [...prev, { name: "", value: "", type: "text" }]);
+  }
+
+  function handleClose(index: number) {
+    setJsonValue(prev => [...prev.filter((e, i) => i != index)]);
   }
 
   function handleChange(event) {
-    const prop = event.target.dataset.prop - 1;
+    const prop = event.target.dataset.prop;
     const name = event.target.name;
     const value = event.target.value;
 
-    console.log(jsonValue);
-    console.log(prop);
-    console.log(jsonValue[prop]);
-
-    if (name === "name") {
-      jsonValue[prop].key = value;
-    } else if (name === "value") {
-      jsonValue[prop].value = value;
-    } else if (name === "type") {
-      if (value === "string") {
-        setTypeValue("text");
-        //jsonValue[prop].value = event.target.dataset.value;
-      } else if (value === "number") {
-        setTypeValue("number");
-        //jsonValue[prop].value = parseInt(event.target.dataset.value);
-      } else if (value === "boolean") {
-        setTypeValue("radio");
-        // jsonValue[prop].value = JSON.parse(event.target.dataset.value);
-      } else if (value === "object") {
-        //jsonValue[prop].value = event.target.dataset.value;
-      } else if (value === "array") {
-        // jsonValue[prop].value = event.target.dataset.value;
+    setJsonValue(prevState => {
+      const updatedJsonValue = [...prevState];
+      if (name === "name") {
+        updatedJsonValue[prop].name = value;
+      } else if (name === "value") {
+        if (updatedJsonValue[prop].type === "radio") {
+          updatedJsonValue[prop].value = value === "true" ? true : false;
+        } else {
+          updatedJsonValue[prop].value = value;
+        }
+      } else if (name === "type") {
+        updatedJsonValue[prop].value = "";
+        if (value == Type.string) {
+          updatedJsonValue[prop].type = "text";
+        } else if (value == Type.number) {
+          updatedJsonValue[prop].type = "number";
+        } else if (value == Type.boolean) {
+          updatedJsonValue[prop].type = "radio";
+          updatedJsonValue[prop].value = false;
+        } else if (value == Type.object) {
+          updatedJsonValue[prop].type = "object";
+        } else if (value == Type.array) {
+          updatedJsonValue[prop].type = "array";
+        }
       }
-    }
+      return updatedJsonValue;
+    });
+    console.log(jsonValue);
   }
 
   return (
     <div className='container-add'>
-      <div>
+      <div className='container-obcjet-name'>
         <input placeholder='Object Name' />
         <button onClick={handleClick}>
           <Icon iconName='list_alt_add' />
         </button>
       </div>
-      <label>Properties</label>
-      <group>
-        {jsonValue.map((prop: IJson, index: numbee) => (
-          <div key={index} className='prop'>
-            <input
-              name='name'
-              data-prop={jsonValue.length}
-              placeholder='Object key'
-              value={prop.value}
-              onChange={handleChange}
-            />
-            <label hidden={typeValue != "radio"}>true</label>
-            <input
-              name='value'
-              checked={false}
-              type={typeValue}
-              data-prop={jsonValue.length}
-              placeholder='Object value'
-              value={prop.value}
-              onChange={handleChange}
-            />
-            <label hidden={typeValue != "radio"}>false</label>
-            <input
-              name='value'
-              checked={true}
-              hidden={typeValue != "radio"}
-              type={"radio"}
-              data-prop={jsonValue.length}
-              placeholder='Object value'
-              value={prop.value}
-              onChange={handleChange}
-            />
-            <select
-              name='type'
-              data-prop={jsonValue.length}
-              data-value={prop.value}
-              onChange={handleChange}
-            >
-              <option value='string'>String</option>
-              <option value='number'>Number</option>
-              <option value='boolean'>Boolean</option>
-              <option value='object'>Object</option>
-              <option value='array'>Array</option>
-            </select>
+      <div className='auto-key'>
+        <div className='interruptor-key'>
+          <label>Auto key? </label>
+          <Interruptor activated={isAutoKey} onToggle={handleKey} />
+        </div>
+
+        {isAutoKey && (
+          <div className='label-key'>
+            <label>Key: </label>
+            <label>hsud7dh7wheu7ejw8idje7ejd8kdyd</label>
           </div>
+        )}
+      </div>
+      <br />
+
+      <fieldset>
+        {jsonValue.map((prop: IJson, index: number) => (
+          <fieldset key={index} className='prop'>
+            <legend>
+              <label>Propertie</label>
+              <button onClick={() => handleClose(index)}>
+                <Icon iconName='close' />
+              </button>
+            </legend>
+            <div className='container-input'>
+              <input
+                name='name'
+                data-prop={index}
+                placeholder='Object key'
+                value={prop.name}
+                onChange={handleChange}
+              />
+
+              {prop.type != "radio" ? (
+                <input
+                  name='value'
+                  type={prop.type}
+                  data-prop={index}
+                  placeholder='Object value'
+                  value={prop.value}
+                  onChange={handleChange}
+                />
+              ) : (
+                <fieldset className='container-radio'>
+                  <label>True</label>
+                  <input
+                    name='value'
+                    checked={prop.value}
+                    type={"radio"}
+                    data-prop={index}
+                    placeholder='Object value'
+                    value='true'
+                    onChange={handleChange}
+                  />
+                  <label>False</label>
+                  <input
+                    name='value'
+                    checked={!prop.value}
+                    type={"radio"}
+                    data-prop={index}
+                    placeholder='Object value'
+                    value='false'
+                    onChange={handleChange}
+                  />
+                </fieldset>
+              )}
+            </div>
+            <div className='container-select'>
+              <select name='type' data-prop={index} onChange={handleChange}>
+                <option value={Type.string}>String</option>
+                <option value={Type.number}>Number</option>
+                <option value={Type.boolean}>Boolean</option>
+                <option value={Type.object}>Object</option>
+                <option value={Type.array}>Array</option>
+              </select>
+            </div>
+          </fieldset>
         ))}
-      </group>
+      </fieldset>
     </div>
   );
 }

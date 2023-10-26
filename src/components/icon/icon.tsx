@@ -1,4 +1,5 @@
 import { CSSProperties } from "react";
+import "./icon.css";
 
 export default function Icon({
   iconName,
@@ -13,8 +14,11 @@ export default function Icon({
 }) {
   return (
     <i
-      className={`material-symbols-outlined ${classCss}`}
-      style={{ userSelect: "none", ...style }}
+      className={`material-symbols-outlined icon__ ${classCss}`}
+      style={{
+        userSelect: "none",
+        ...style,
+      }}
       id={id}
     >
       {iconName}
