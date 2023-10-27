@@ -7,8 +7,8 @@ const argumentsCheck = require("./argumentsCheck");
 const { code, encode } = require("./locks");
 const { createFileDb, createFileDbAsync, db_name } = require("./createFileDb");
 
-const l = (e) => console.log(e);
-const error = (e) => console.error(e);
+const l = e => console.log(e);
+const error = e => console.error(e);
 
 class daj {
   //
@@ -50,14 +50,13 @@ class daj {
     //argumentsCheck({ obj: obj });
 
     let constructor_name;
-    constructor_name = obj;//obj.constructor.name;
+    constructor_name = obj; //obj.constructor.name;
     //Reflect.deleteProperty(obj, "constructor");
 
     try {
       let dataReturn = fs.readFileSync(db_name);
 
       try {
-        
         return {
           error: null,
           data: Reflect.get(JSON.parse(encode(dataReturn)), constructor_name),
@@ -263,7 +262,7 @@ class daj {
         }
 
         if (!isError) {
-          fs.writeFile(db_name, code(JSON.stringify(allData)), (err) => {
+          fs.writeFile(db_name, code(JSON.stringify(allData)), err => {
             if (err) {
               error(err);
               callback(errors.notDataAccess);
@@ -278,7 +277,7 @@ class daj {
   //
   //method post async
   //
-  postAsync(obj) {
+  postAsync(objName, obj) {
     argumentsCheck({ obj: obj });
 
     let constructor_name;
@@ -305,7 +304,7 @@ class daj {
 
     const isSetAllData = (objData, newProtype) => {
       if (newProtype) {
-       allData = {};
+        allData = {};
       }
 
       if (!Reflect.set(allData, constructor_name, objData)) {
@@ -376,7 +375,7 @@ class daj {
     } else {
       Reflect.deleteProperty(obj, "constructor");
 
-      const replaceEleOfArray = (objToReplace) => {
+      const replaceEleOfArray = objToReplace => {
         for (const e in objToReplace) {
           if (objToReplace[e].key == obj.key) {
             objToReplace[e] = obj;
@@ -422,7 +421,7 @@ class daj {
           }
 
           if (!isError) {
-            fs.writeFile(db_name, code(JSON.stringify(allData)), (err) => {
+            fs.writeFile(db_name, code(JSON.stringify(allData)), err => {
               if (err) {
                 error(err);
                 isError = true;
@@ -528,7 +527,7 @@ class daj {
 
         if (specificObj !== undefined) {
           if (Array.isArray(specificObj)) {
-            const index = specificObj.findIndex((e) => e.key === obj.key);
+            const index = specificObj.findIndex(e => e.key === obj.key);
 
             if (index > -1) {
               specificObj.splice(index, 1);
@@ -543,7 +542,7 @@ class daj {
           isError = true;
         }
         if (!isError) {
-          fs.writeFile(db_name, code(JSON.stringify(allData)), (err) => {
+          fs.writeFile(db_name, code(JSON.stringify(allData)), err => {
             if (err) {
               error(err);
               callback(errors.notDataAccess, null);
@@ -584,7 +583,7 @@ class daj {
 
       if (specificObj !== undefined) {
         if (Array.isArray(specificObj)) {
-          const index = specificObj.findIndex((e) => e.key === obj.key);
+          const index = specificObj.findIndex(e => e.key === obj.key);
 
           if (index > -1) {
             specificObj.splice(index, 1);

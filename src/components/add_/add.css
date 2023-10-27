@@ -8,6 +8,19 @@
   height: 100%;
   padding: 20px;
   box-sizing: border-box;
+  border: 3px solid #300042;
+  border-radius: 5px;
+  position: relative;
+}
+
+.container-add::before {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #300042 0%, #c217ff 25%, #c217ff 40%, #5501fc 50%, #c217ff 60%, #c217ff 75%, #300042 100%);
 }
 
 .container-add textarea {
@@ -41,6 +54,7 @@ select {
   background-color: transparent;
   border-bottom: 1px solid silver;
   padding: 2px;
+  user-select: none;
 }
 
 select:focus {
@@ -57,6 +71,7 @@ select:focus {
   border-radius: 3px 3px;
   padding: 6px;
   margin: 5px;
+  gap: 5px;
   box-shadow:
     inset 1px 1px 3px 1px #e089ff,
     inset -1px -1px 3px 1px #600082;
@@ -123,4 +138,23 @@ select:focus {
 .container-obcjet-name {
   width: 90%;
   margin-bottom: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.clear-select {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.clear-select:active {
+  transform: scale(0.8);
+}
+
+.keysCode {
+  font-size: 15px;
+  margin: auto;
+}
+
+.NoSelet {
+  user-select: none;
 }
