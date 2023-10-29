@@ -282,7 +282,7 @@ class daj {
 
     let constructor_name;
     let objIsArray = false;
-    constructor_name = obj.constructor.name;
+    constructor_name = objName;// obj.constructor.name;
     Reflect.deleteProperty(obj, "constructor");
 
     if (constructor_name === "Array") {

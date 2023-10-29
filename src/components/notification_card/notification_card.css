@@ -1,0 +1,21 @@
+.notification-card {
+  background: linear-gradient(90deg, #300042 0%, #c217ff 25%, #c217ff 40%, #e56bff 50%, #c217ff 60%, #c217ff 75%, #300042 100%);
+  border: 1px solid #7c009636;
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.notification-text {
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+.close-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}

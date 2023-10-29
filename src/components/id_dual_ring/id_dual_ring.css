@@ -1,0 +1,31 @@
+
+.conten div {
+ margin: auto;
+}
+
+.errorlabel {
+  color: red;
+  font-size: 18px;
+}
+
+.ldDualRing {
+  margin: auto;
+  width: 35px;
+  height: 35px;
+  margin-bottom: 10px;
+  border-radius: 50%;
+  border: 6px double #c217ff;
+  box-sizing: border-box;
+  box-shadow: 0 0 2px 1px #300042 inset, 0 0 2px 1px #300042;
+  border-color: #c217ff transparent;
+  animation: ld-dual-ring 1.2s linear infinite;
+}
+
+@keyframes ld-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

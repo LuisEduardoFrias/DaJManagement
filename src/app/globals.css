@@ -25,3 +25,15 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+.clear-select {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.clear-select:active {
+  transform: scale(0.9);
+}
+
+.NoSelet {
+  user-select: none;
+}

@@ -12,7 +12,7 @@ export default function BackButton() {
   };
 
   return (
-    <button className='button' onClick={retroceder}>
+    <button className='clear-select' onClick={retroceder}>
       <Icon iconName='reply_all' />
     </button>
   );

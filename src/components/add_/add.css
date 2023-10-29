@@ -43,9 +43,12 @@
 input {
   background-color: transparent;
   border: none;
+  width: 100%;
 }
 
 input:focus {
+  background-color: transparent;
+  color: white;
   outline: none;
   box-shadow: none;
 }
@@ -101,6 +104,10 @@ select:focus {
   grid-area: 1 / 1 / 2 / 2;
 }
 
+.container-input-key {
+  grid-area: 1 / 1 / 2 / 3;
+}
+
 .container-select {
   grid-area: 1 / 2 / 2 / 3;
   margin-top: 25px;
@@ -139,7 +146,7 @@ select:focus {
   width: 90%;
   margin-bottom: 5px;
   display: flex;
-  justify-content: space-between;
+  gap: 20px;
 }
 
 .clear-select {
